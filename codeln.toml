@@ -1,0 +1,104 @@
+# CodeLn Configuration File
+#
+# This file configures the behavior of CodeLn, a professional source code
+# line counter. All settings can be overridden via command-line arguments.
+
+# Path to analyze (can be overridden by CLI argument)
+# Defaults to current directory if not specified
+path = "."
+
+# Include only specific file extensions
+# Leave empty to include all file types (recommended for most projects)
+# Extensions should be specified without the leading dot
+# Example: ["rs", "toml", "md"]
+include_ext = []
+
+# Exclude specific file extensions
+# Nothing is excluded by extension unless you list it here or pass
+# --exclude-ext; this is just a commonly-useful starting point.
+# Extensions should be specified without the leading dot
+exclude_ext = ["lock", "log", "tmp", "cache"]
+
+# Exclude directories
+# These directories will be completely skipped during analysis. Most of
+# the list below is already CodeLn's built-in default (used even without
+# a config file). "out", "venv", "env", and ".vs" are added here as
+# commonly-useful extras.
+exclude_dirs = [
+    # Version control
+    ".git",
+    ".svn",
+    ".hg",
+
+    # Build outputs
+    "target",
+    "build",
+    "dist",
+    "out",
+
+    # Dependencies
+    "node_modules",
+    "vendor",
+
+    # Python
+    "__pycache__",
+    ".pytest_cache",
+    "venv",
+    "env",
+
+    # IDE folders
+    ".idea",
+    ".vscode",
+    ".vs",
+]
+
+# Exclude specific files by exact name
+# Useful for generated files or lock files you want to skip
+exclude_files = [
+    "package-lock.json",
+    "Cargo.lock",
+    "yarn.lock",
+    "pnpm-lock.yaml",
+    "poetry.lock",
+]
+
+# Display Options
+# ----------------
+
+# Show detailed line counts for each individual file
+# Useful for finding which files have the most code
+show_details = false
+
+# Show list of files that were excluded by filters
+# Helpful for debugging filter configurations
+show_excluded = false
+
+# Counting Options
+# ----------------
+
+# Count blank lines in the statistics
+# Blank lines are lines containing only whitespace
+count_blank = true
+
+# Count comment lines in the statistics
+# Supports common comment styles: //, #, /* */, <!--
+count_comments = true
+
+# Traversal Options
+# -----------------
+
+# Follow symbolic links during directory traversal
+# Warning: May cause infinite loops if links create cycles
+follow_links = false
+
+# Maximum directory depth to traverse
+# Uncomment and set a value to limit recursion depth
+# Depth 1 = only specified directory, 2 = one level down, etc.
+# max_depth = 10
+
+# Output Options
+# --------------
+
+# Default output format: "text", "json", or "csv"
+# Overridden by the --format CLI flag
+format = "text"
